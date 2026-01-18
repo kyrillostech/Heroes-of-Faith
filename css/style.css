@@ -1,0 +1,267 @@
+/* تعيين الخصائص الأساسية */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Tajawal', sans-serif;
+    background-color: #f4f4f4;
+    background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+    color: #0D1117;
+    direction: rtl;
+    text-align: right;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    padding: 30px;
+    margin: 0 auto;
+    border: 3px solid #FCA311;
+}
+
+/* تنسيق الشاشات */
+.screen {
+    text-align: center;
+    padding: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+h1 {
+    color: #0D1117;
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #B45309;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.instructions {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    color: #555;
+    font-weight: bold;
+}
+
+/* تنسيق الأزرار الرئيسي */
+.btn {
+    background-color: #0D1117;
+    color: #FCA311;
+    border: 2px solid #0D1117;
+    border-radius: 12px;
+    padding: 15px 35px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px;
+    transition: all 0.3s ease;
+    font-family: 'Tajawal', sans-serif;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+    background-color: #fff;
+    color: #0D1117;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.small-btn {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    background-color: #6c757d;
+    color: white;
+    border-color: #6c757d;
+}
+
+.small-btn:hover {
+    background-color: #5a6268;
+    color: white;
+}
+
+/* تنسيق اختيار المستوى */
+.level-selection {
+    margin: 30px 0;
+}
+
+.level-btn {
+    background-color: #fff;
+    color: #0D1117;
+    border: 2px solid #FCA311;
+    border-radius: 50px;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px;
+    transition: all 0.3s ease;
+    font-family: 'Tajawal', sans-serif;
+}
+
+.level-btn:hover {
+    background-color: #FCA311;
+    color: #fff;
+}
+
+.level-btn.active {
+    background-color: #FCA311;
+    color: #0D1117;
+    box-shadow: 0 0 10px rgba(252, 163, 17, 0.5);
+    transform: scale(1.05);
+}
+
+/* تنسيق لوحة اللعب */
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.attempts {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #0D1117;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 15px;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+/* تنسيق البطاقات */
+.card {
+    aspect-ratio: 1/1;
+    background-color: transparent;
+    border-radius: 15px;
+    cursor: pointer;
+    perspective: 1000px;
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.6s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid #eee;
+}
+
+.card-front {
+    background-color: #fff;
+    transform: rotateY(180deg);
+}
+
+.card-back {
+    background-color: #0D1117;
+    /* زخرفة قبطية بسيطة (نمط) */
+    background-image: radial-gradient(#FCA311 15%, transparent 16%),
+        radial-gradient(#FCA311 15%, transparent 16%);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    border: 2px solid #FCA311;
+}
+
+.card.flipped .card-front {
+    transform: rotateY(0deg);
+}
+
+.card.flipped .card-back {
+    transform: rotateY(-180deg);
+}
+
+.card.matched .card-front {
+    border: 3px solid #FCA311;
+    box-shadow: 0 0 15px rgba(252, 163, 17, 0.4);
+}
+
+.card img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+}
+
+/* شاشة النهاية */
+.congrats {
+    color: #FCA311;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 0px #0D1117;
+    animation: pulse 1.5s infinite;
+}
+
+.result {
+    font-size: 1.4rem;
+    margin: 20px 0 30px;
+    color: #333;
+}
+
+#final-attempts {
+    color: #d35400;
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 480px) {
+    .game-board {
+        gap: 8px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .btn {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+}
